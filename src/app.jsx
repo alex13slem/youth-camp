@@ -8,7 +8,8 @@ const users = [
 ];
 
 export function App() {
-  const [selectUser, setSelectUser] = useState(users[0].name);
+  // const [selectUser, setSelectUser] = useState(users[0].name);
+  const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
   const [access, setAccess] = useState(null);
 
@@ -17,9 +18,10 @@ export function App() {
 
   function check(e) {
     e.preventDefault();
-    const userObj = users.find((el) => el.name === selectUser);
+    // const userObj = users.find((el) => el.name === selectUser);
+    const userObj = users.find((el) => el.name === user);
 
-    if (password === userObj.password) {
+    if (password === userObj?.password) {
       setAccess(true);
     } else {
       setAccess(false);
@@ -52,7 +54,7 @@ export function App() {
         Телефон, <br /> дай поесть
       </h1>
       <form onSubmit={check}>
-        <select
+        {/* <select
           onChange={(e) => {
             setSelectUser(e.target.value);
           }}
@@ -62,10 +64,17 @@ export function App() {
               {user.name}
             </option>
           ))}
-        </select>
+        </select> */}
         <input
           type="text"
-          name="password"
+          value={user}
+          onInput={(e) => {
+            setUser(e.target.value);
+          }}
+          placeholder="Введи имя"
+        />
+        <input
+          type="text"
           value={password}
           onInput={(e) => {
             setPassword(e.target.value);
