@@ -64,12 +64,6 @@ input[type='submit'] {
   animation: access-false 0.3s ease-in-out 5 alternate both;
 }
 
-@media (prefers-color-scheme: light) {
-  form > * {
-    background-color: rgb(221, 221, 221);
-  }
-}
-
 /* the svg element */
 .svg-sun {
   opacity: 0;
@@ -110,5 +104,16 @@ input[type='submit'] {
 @keyframes spin {
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  form > * {
+    background-color: rgb(221, 221, 221);
+  }
+
+  .access-true ~ h1,
+  .access-false ~ h1 {
+    color: #fafafa;
   }
 }
