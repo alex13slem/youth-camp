@@ -1,0 +1,114 @@
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  /* padding: 2rem; */
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form > * {
+  height: 2.5em;
+  outline: none;
+  border: none;
+  padding: 0 1em;
+  border-radius: 15px;
+  background-color: rgb(68, 68, 68);
+  font-size: 24px;
+}
+
+input[type='submit'] {
+  align-self: center;
+  width: 50%;
+}
+
+@keyframes access-true {
+  0% {
+    background-color: #00000000;
+  }
+  100% {
+    background-color: var(--accent);
+  }
+}
+@keyframes access-false {
+  0% {
+    background-color: #00000000;
+  }
+  100% {
+    background-color: var(--accent);
+  }
+}
+.result-bg {
+  position: absolute;
+  inset: 0;
+  content: '';
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.result-bg.access-true {
+  --accent: rgb(0, 95, 0);
+  /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+  animation: access-true 0.3s ease-in-out 5 alternate both;
+}
+
+.result-bg.access-false {
+  --accent: rgb(110, 0, 0);
+  /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+  animation: access-false 0.3s ease-in-out 5 alternate both;
+}
+
+@media (prefers-color-scheme: light) {
+  form > * {
+    background-color: rgb(221, 221, 221);
+  }
+}
+
+/* the svg element */
+.svg-sun {
+  opacity: 0;
+  width: 200%;
+  transition: all 4s ease;
+  /* height: 300px; */
+
+  animation: spin 25s linear infinite, sun-glow 3s 0s linear infinite;
+}
+
+.result-bg.access-true .svg-sun {
+  opacity: 0.5;
+}
+/* the circle element in the svg itself */
+#sun {
+  stroke-width: 18;
+  stroke-dasharray: 2;
+  stroke-dashoffset: 2;
+}
+/* animation for the sun glowing effect */
+@keyframes sun-glow {
+  0% {
+    fill: #fdd94a;
+    stroke: #f3cd34;
+  }
+  50% {
+    fill: #e67e22;
+    stroke: #e67e22;
+  }
+  100% {
+    fill: #fdd94a;
+    stroke: #f3cd34;
+  }
+}
+
+/* start spin animation */
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
