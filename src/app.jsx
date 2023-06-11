@@ -19,7 +19,7 @@ export function App() {
   function check(e) {
     e.preventDefault();
     // const userObj = users.find((el) => el.name === selectUser);
-    const userObj = users.find((el) => el.name === user);
+    const userObj = users.find((el) => el.name === user.trim());
 
     if (password === userObj?.password) {
       setAccess(true);
